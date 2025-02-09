@@ -19,6 +19,13 @@
       "skills": ["Harden"],
       "skillDropRate": 0.15,
       "xpReward": 200
-    }
+    },
+    {
+        "name": "Ice Wolf",
+        "level": 2,
+        "skills": ["Frostbite"],
+        "skillDropRate": 0.25,
+        "xpReward": 75
+      }
   ]
   
