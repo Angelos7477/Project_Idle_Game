@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Wild Boar",
+      "level": 1,
+      "skills": ["Charge"],
+      "skillDropRate": 0.3,
+      "xpReward": 50
+    },
+    {
+      "name": "Fire Spirit",
+      "level": 3,
+      "skills": ["Flame Burst"],
+      "skillDropRate": 0.2,
+      "xpReward": 100
+    },
+    {
+      "name": "Stone Golem",
+      "level": 5,
+      "skills": ["Harden"],
+      "skillDropRate": 0.15,
+      "xpReward": 200
+    }
+  ]
+  

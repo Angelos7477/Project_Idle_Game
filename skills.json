@@ -1,0 +1,21 @@
+[
+    {
+      "name": "Fireball",
+      "rank": "C",
+      "type": "Offensive",
+      "effect": "Deals moderate fire damage to enemies."
+    },
+    {
+      "name": "Regeneration",
+      "rank": "B",
+      "type": "Passive",
+      "effect": "Restores health over time."
+    },
+    {
+      "name": "Harden",
+      "rank": "D",
+      "type": "Defensive",
+      "effect": "Increases defense for a short duration."
+    }
+  ]
+  
