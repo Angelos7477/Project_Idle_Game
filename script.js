@@ -6,22 +6,74 @@ let player = {
     xpToNextLevel: 100,
   };
   
-  // Load JSON data
-  let enemies = [];
-  let skills = [];
+
+// Abstracted data fetching functions
+// Abstracted data fetching functions
+async function fetchData(source) {
+    if (source === "json") {
+      // Load data from JSON files
+      const enemiesResponse = await fetch("enemies.json");
+      const skillsResponse = await fetch("skills.json");
+      const worldsResponse = await fetch("worlds.json");
   
-  // Fetch JSON files and initialize data
-  async function loadGameData() {
-    const enemyResponse = await fetch("enemies.json");
-    enemies = await enemyResponse.json();
+      return {
+        enemies: await enemiesResponse.json(),
+        skills: await skillsResponse.json(),
+        worlds: await worldsResponse.json(),
+      };
+    } else if (source === "database") {
+      // Placeholder for database fetching (replace with actual API/database calls)
+      console.log("Fetching data from database...");
+      return mockDatabaseFetch();
+    }
+  }
   
-    const skillResponse = await fetch("skills.json");
-    skills = await skillResponse.json();
-  
-    console.log("Enemies:", enemies);
-    console.log("Skills:", skills);
-  
-    // Display the first enemy
+  // Mock function simulating a database fetch
+  function mockDatabaseFetch() {
+    return {
+      enemies: [
+        { name: "Wild Boar", level: 1, skills: ["Charge"], skillDropRate: 0.3, xpReward: 50 },
+        { name: "Fire Spirit", level: 3, skills: ["Flame Burst"], skillDropRate: 0.2, xpReward: 100 },
+        { name: "Stone Golem", level: 5, skills: ["Harden"], skillDropRate: 0.15, xpReward: 200 },
+      ],
+      skills: [
+        { name: "Fireball", rank: "C", type: "Offensive", effect: "Deals moderate fire damage." },
+        { name: "Regeneration", rank: "B", type: "Passive", effect: "Restores health over time." },
+        { name: "Harden", rank: "D", type: "Defensive", effect: "Increases defense for a short duration." },
+      ],
+      worlds: {
+        ForestWorld: {
+          name: "Forest World",
+          areas: [
+            { name: "Goblin Camp", enemies: ["Wild Boar"], isCleared: false },
+            { name: "Ancient Ruins", enemies: ["Stone Golem"], isCleared: false },
+          ],
+        },
+        LavaWorld: {
+          name: "Lava World",
+          areas: [
+            { name: "Molten Cavern", enemies: ["Fire Spirit"], isCleared: false },
+          ],
+        },
+      },
+    };
+  }
+    // Initialize game data
+    let enemies = [];
+    let skills = [];
+    let worlds = {};
+    
+
+  // Load game data dynamically
+  async function loadGameData(source = "json") {
+    const data = await fetchData(source);
+    enemies = data.enemies;
+    skills = data.skills;
+    worlds = data.worlds;
+
+    console.log("Game Data Loaded:", { enemies, skills, worlds });
+
+    // Update the first enemy on the screen
     updateEnemy();
   }
   
@@ -78,6 +130,6 @@ let player = {
 });
   
   // Start the game
-  loadGameData();
+  loadGameData("json");
   updateStatus();
   
