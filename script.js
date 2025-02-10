@@ -62,6 +62,8 @@ async function fetchData(source) {
     let enemies = [];
     let skills = [];
     let worlds = {};
+    let currentAreaEnemies = []; // Holds enemies of the current area
+    let currentEnemyIndex = 0; // Keeps track of the enemy being displayed
     
 
   //    Display worlds
@@ -94,8 +96,7 @@ async function fetchData(source) {
     }
 }
 
-let currentAreaEnemies = []; // Holds enemies of the current area
-let currentEnemyIndex = 0; // Keeps track of the enemy being displayed
+
 
 
         //add function to enter worlds
