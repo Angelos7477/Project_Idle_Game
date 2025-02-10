@@ -64,27 +64,117 @@ async function fetchData(source) {
     let worlds = {};
     
 
+  //    Display worlds
+  function displayWorlds() {
+    const worldsList = document.getElementById("worlds-list");
+    worldsList.innerHTML = ""; // Clear previous content
+
+    for (const worldName in worlds) {
+        const world = worlds[worldName];
+
+        // Create a world container
+        const worldDiv = document.createElement("div");
+        worldDiv.className = "world";
+
+        // Add world title
+        const worldTitle = document.createElement("h3");
+        worldTitle.textContent = world.name;
+        worldDiv.appendChild(worldTitle);
+
+        // Add areas in the world
+        world.areas.forEach((area) => {
+            const areaButton = document.createElement("button");
+            areaButton.textContent = `${area.name} ${area.isCleared ? "(Cleared)" : ""}`;
+            areaButton.disabled = false; // Enable all buttons
+            areaButton.addEventListener("click", () => enterArea(worldName, area.name));
+            worldDiv.appendChild(areaButton);
+        });
+
+        worldsList.appendChild(worldDiv);
+    }
+}
+
+let currentAreaEnemies = []; // Holds enemies of the current area
+let currentEnemyIndex = 0; // Keeps track of the enemy being displayed
+
+
+        //add function to enter worlds
+        function enterArea(worldName, areaName) {
+          console.log(`Entering ${areaName} in ${worldName}...`);
+          const area = worlds[worldName].areas.find((area) => area.name === areaName);
+      
+          if (area) {
+              console.log("Area enemies to load:", area.enemies);
+              const areaEnemies = area.enemies
+                  .map((enemyName) => {
+                      const enemy = enemies.find((enemy) => enemy.name === enemyName);
+                      console.log(`Looking for enemy: ${enemyName} - Found:`, enemy);
+                      return enemy;
+                  })
+                  .filter((enemy) => enemy !== undefined);
+      
+              console.log("Filtered enemies for this area:", areaEnemies);
+      
+              if (areaEnemies.length > 0) {
+                  currentEnemyIndex = 0; // **Reset to the first enemy**
+                  currentAreaEnemies = areaEnemies; // **Store enemies in temporary array**
+                  console.log("Current area enemies:", currentAreaEnemies);
+      
+                  updateEnemy();
+                  updateStatus();
+              } else {
+                  console.log("No enemies found for this area.");
+                  currentAreaEnemies = []; // Clear enemies if none are found
+                  updateEnemy();
+              }
+          } else {
+              console.log("Area not found!");
+          }
+      }
+      
+        
   // Load game data dynamically
   async function loadGameData(source = "json") {
     const data = await fetchData(source);
-    enemies = data.enemies;
+    enemies = data.enemies; // Set the global enemies array
     skills = data.skills;
     worlds = data.worlds;
 
     console.log("Game Data Loaded:", { enemies, skills, worlds });
 
-    // Update the first enemy on the screen
-    updateEnemy();
-  }
-  
+    // Load the first world and area by default
+    const firstWorldName = Object.keys(worlds)[0]; // Get the first world
+    const firstArea = worlds[firstWorldName].areas[0]; // Get the first area in the first world
+
+    if (firstArea) {
+        console.log(`Loading default area: ${firstArea.name} in ${firstWorldName}`);
+        enterArea(firstWorldName, firstArea.name); // Enter the first area
+    }
+
+    displayWorlds(); // Display the worlds and areas
+    updateStatus(); // Update the player stats
+}
   // Display the current enemy
-  let currentEnemyIndex = 0;
-  
-  function updateEnemy() {
-    const enemy = enemies[currentEnemyIndex];
-    document.getElementById("enemy-name").textContent = enemy.name;
-  }
-  
+     function updateEnemy() {
+    console.log("Updating enemy...");
+    console.log("Current enemy index:", currentEnemyIndex);
+    console.log("Current area enemies:", currentAreaEnemies);
+
+    if (currentAreaEnemies.length > 0 && currentEnemyIndex < currentAreaEnemies.length) {
+        const enemy = currentAreaEnemies[currentEnemyIndex];
+        console.log("Displaying enemy:", enemy);
+        if (enemy) {
+            document.getElementById("enemy-name").textContent = enemy.name;
+            document.getElementById("consume-enemy").disabled = false; // Enable button
+        }
+    } else {
+        console.log("No enemies available.");
+        document.getElementById("enemy-name").textContent = "No enemies here!";
+        document.getElementById("consume-enemy").disabled = true; // Disable button
+    }
+}
+
+
   // Update the player's status
   function updateStatus() {
     document.getElementById("current-form").textContent = player.form;
@@ -98,36 +188,46 @@ async function fetchData(source) {
   
   // Absorb the current enemy's skill
   document.getElementById("consume-enemy").addEventListener("click", () => {
-    const enemy = enemies[currentEnemyIndex];
-    const dropChance = Math.random(); // Random chance to drop the skill
-  
-    // Handle skill drop
-    if (dropChance <= enemy.skillDropRate) {
-      const skillName = enemy.skills[0]; // Assume one skill per enemy for now
-      if (!player.skills.includes(skillName)) {
-        player.skills.push(skillName);
-        console.log(`Acquired skill: ${skillName}`);
-      } else {
-        console.log("Skill already acquired!");
-      }
-    } else {
-      console.log("No skill acquired this time!");
+    if (currentAreaEnemies.length > 0) {  // ✅ Fix: Use `currentAreaEnemies` instead of `enemies`
+        const enemy = currentAreaEnemies[currentEnemyIndex]; // ✅ Fix: Reference `currentAreaEnemies`
+        const dropChance = Math.random();
+
+        // Handle skill drop
+        if (dropChance <= enemy.skillDropRate) {
+            const skillName = enemy.skills[0];
+            if (!player.skills.includes(skillName)) {
+                player.skills.push(skillName);
+                console.log(`Acquired skill: ${skillName}`);
+            } else {
+                console.log("Skill already acquired!");
+            }
+        } else {
+            console.log("No skill acquired this time!");
+        }
+
+        // Gain XP and check for level up
+        player.xp += enemy.xpReward;
+        if (player.xp >= player.xpToNextLevel) {
+            player.level++;
+            player.xp -= player.xpToNextLevel;
+            player.xpToNextLevel = Math.floor(player.xpToNextLevel * 1.5);
+            console.log(`Level up! You are now level ${player.level}`);
+        }
+
+        // ✅ Fix: Use `currentAreaEnemies.length`
+        currentEnemyIndex++;
+        if (currentEnemyIndex >= currentAreaEnemies.length) {  
+            console.log("All enemies defeated in this area!");
+            currentEnemyIndex = 0; // Reset index
+            updateEnemy(); // This will correctly show "No enemies here!" when the area is empty
+        } else {
+            updateEnemy();
+        }
+
+        updateStatus();
     }
-  
-    // Gain XP and check for level up
-    player.xp += enemy.xpReward;
-    if (player.xp >= player.xpToNextLevel) {
-      player.level++;
-      player.xp -= player.xpToNextLevel;
-      player.xpToNextLevel = Math.floor(player.xpToNextLevel * 1.5); // Increase XP requirement
-      console.log(`Level up! You are now level ${player.level}`);
-    }
-  
-  // Move to the next enemy
-  currentEnemyIndex = (currentEnemyIndex + 1) % enemies.length; // Cycle through enemies
-  updateEnemy();
-  updateStatus();
 });
+
   
   // Start the game
   loadGameData("json");

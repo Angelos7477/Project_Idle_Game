@@ -33,3 +33,36 @@ body {
     background-color: #0056b3;
   }
   
+  #worlds-area {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.world {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.world h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.world button {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.world button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

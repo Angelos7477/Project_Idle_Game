@@ -2,26 +2,14 @@
     "ForestWorld": {
       "name": "Forest World",
       "areas": [
-        {
-          "name": "Goblin Camp",
-          "enemies": ["Wild Boar"],
-          "isCleared": false
-        },
-        {
-          "name": "Ancient Ruins",
-          "enemies": ["Stone Golem"],
-          "isCleared": false
-        }
+        { "name": "Goblin Camp", "enemies": ["Wild Boar"] },
+        { "name": "Ancient Ruins", "enemies": ["Stone Golem"] }
       ]
     },
     "LavaWorld": {
       "name": "Lava World",
       "areas": [
-        {
-          "name": "Molten Cavern",
-          "enemies": ["Fire Spirit"],
-          "isCleared": false
-        }
+        { "name": "Molten Cavern", "enemies": ["Fire Spirit"] }
       ]
     }
   }

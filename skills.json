@@ -16,6 +16,12 @@
       "rank": "D",
       "type": "Defensive",
       "effect": "Increases defense for a short duration."
-    }
+    },
+    {
+        "name": "Lightning Strike",
+        "rank": "A",
+        "type": "Offensive",
+        "effect": "Deals high lightning damage to all enemies."
+      }
   ]
   
