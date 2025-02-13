@@ -1,11 +1,7 @@
-let player = {
-    form: "Basic Goblin",
-    skills: [],
-    xp: 0,
-    level: 1,
-    xpToNextLevel: 100,
-  };
-  
+import Character from './character.js';
+
+
+let player = new Character("Basic Goblin", [], 0, 1, 100);
 
 // Abstracted data fetching functions
 // Abstracted data fetching functions
@@ -207,12 +203,9 @@ async function fetchData(source) {
         }
 
         // Gain XP and check for level up
-        player.xp += enemy.xpReward;
+        player.addExperience(enemy.xpReward)
         if (player.xp >= player.xpToNextLevel) {
-            player.level++;
-            player.xp -= player.xpToNextLevel;
-            player.xpToNextLevel = Math.floor(player.xpToNextLevel * 1.5);
-            console.log(`Level up! You are now level ${player.level}`);
+            player.levelUp();
         }
 
         // ✅ Fix: Use `currentAreaEnemies.length`
