@@ -1,0 +1,48 @@
+[
+    {
+      "id": "iron_sword",
+      "name": "Iron Sword",
+      "type": "weapon",
+      "rarity": "common",
+      "description": "A basic sword that increases your attack.",
+      "stat_bonus": {
+        "attack": 5
+      },
+      "effects": []
+    },
+    {
+      "id": "leather_armor",
+      "name": "Leather Armor",
+      "type": "armor",
+      "rarity": "common",
+      "description": "Provides light protection.",
+      "stat_bonus": {
+        "defense": 3
+      },
+      "effects": []
+    },
+    {
+      "id": "healing_potion",
+      "name": "Healing Potion",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "description": "Restores 20 HP when used.",
+      "stat_bonus": {},
+      "effects": [
+        {
+          "type": "heal",
+          "amount": 20
+        }
+      ]
+    },
+    {
+      "id": "fire_crystal",
+      "name": "Fire Crystal",
+      "type": "material",
+      "rarity": "rare",
+      "description": "A magical crystal used for crafting or upgrades.",
+      "stat_bonus": {},
+      "effects": []
+    }
+  ]
+  
