@@ -1,0 +1,27 @@
+I am making a rpg idle game
+Each area will have 3-4 options to do.
+
+For example in the orcs camp you could train, in the temple you could meditate, in the merchants you could trade.
+
+Suggest me 3-4 options for each.
+Of those only one should be unique for each place, the others should be core
+
+Haunted Forest
+Explore (core): Search for herbs, artifacts, or hidden threats.
+
+Fight (core): Face roaming spirits and beasts.
+Commune with Spirits (unique): Attempt to speak with ghosts for lore or buffs.
+Meditate (core): Connect with primal or mystical energies.
+
+Orc Camp
+Train (core): Improve combat abilities with brutal sparring.
+Explore (core): Scavenge the camp outskirts for materials.
+Intimidate (unique): Gain influence over the orcs by asserting dominance.
+
+Rest (core): Recover health and stamina by sleeping near the warfires.
+
+Εγώ σκέφτομαι και με κάποιον τρόπο οι επιλογές σου να επηρεάζουν το world.
+
+Πχ να αυξάνει το level τους, η τα bonus etc.
+
+Και στο reincarnation να παραμένει ίδιος ο κόσμος.
