@@ -1,28 +1,80 @@
-🌟 Concrete Steps to Start:
-Clearly define first transformation (Goblin → Ogre).
+🚩 Idle-Isekai Game Development Roadmap
+This roadmap assumes you already have a basic structure (monsters, items, skills, worlds, inventory) in place.
 
-Set clear unlockable mechanics for Ogre form (e.g., Equipment crafting).
+✅ Phase 1: Core Gameplay & Mechanics (Current)
+#	Step	Status
+1	Setup basic HTML/CSS structure and JavaScript logic	✅ Done
+2	Implement basic enemy combat and leveling mechanics	✅ Done
+3	Implement basic skills and skill absorption mechanic	✅ Done
+4	Basic item drops and inventory logic	✅ Done
 
-Sketch the first meaningful world shift (e.g., primitive → civilization).
+🔄 Phase 2: Reincarnation & Evolution
+#	Step	Status
+1	Define base form: Goblin (stats, skills)	⬜️
+2	Clearly define first set of transformations (Hobgoblin, Mage, Rogue)	⬜️
+3	Implement Reincarnation choice UI (basic screen with 3 options)	⬜️
+4	Develop logic: choosing reincarnation resets level but evolves form, retains some skills	⬜️
+5	Test reincarnation mechanic (Level ~100 trigger)	⬜️
 
-Code a small "Transformation Screen" UI prototype.
+🧬 Phase 3: Branching Forms & Gameplay Innovation
+#	Step	Status
+1	Define clearly mechanics for first 3–5 forms per path (unique skills & gameplay per form)	⬜️
+2	Add meaningful progression milestones (~Lv100 per reincarnation)	⬜️
+3	Introduce new gameplay mechanics (Crafting, Summoning, City-building, etc.) clearly at each reincarnation milestone	⬜️
+4	Clearly define player-driven narrative forks (Serve vs Oppose the God mechanic)	⬜️
 
-🗺️ Suggested Roadmap (Next Steps):
- Define exact first transformations (forms, mechanics).
+🕹️ Phase 4: Gameplay Depth & Expansion
+#	Step	Status
+1	Expand item system: Equipment slots, equipping logic, stat bonuses	⬜️
+2	Introduce Dungeons: unique bosses, exclusive loot, clearable once per reincarnation	⬜️
+3	Implement Crafting/Alchemy (combine items for potions, gear, upgrades)	⬜️
+4	Add Skill Evolution Tree (skills mutate/evolve based on usage)	⬜️
+5	Implement Memory Echoes/Legacy System (permanent buffs from past lives)	⬜️
 
- Sketch narrative/quest goals for each world.
+🌍 Phase 5: World-Building & Lore
+#	Step	Status
+1	Clearly define world themes and evolution (Primordial, Civilization, Corrupted, Divine worlds)	⬜️
+2	Add narrative elements (quests, lore snippets) within each world clearly	⬜️
+3	Add NPCs, meaningful interactions (shops, quest givers, mentors, etc.)	⬜️
+4	Clearly design final narrative end-goal (confront or serve the summoning god)	⬜️
 
- Prototype form-change mechanics (skills, stats).
+🏆 Phase 6: Endgame, Climax & Replayability
+#	Step	Status
+1	Clearly define final forms (God/Chaos forms)	⬜️
+2	Implement final confrontation: battle vs the god	⬜️
+3	Clearly implement post-endgame reward (Sandbox mode or God mode)	⬜️
+4	Refine replayability: unique experiences based on choices	⬜️
 
- Integrate permanent legacy rewards (Memory Echoes).
+⚙️ Phase 7: Polish, UI, UX & Balancing
+#	Step	Status
+1	Polish all UI screens: combat, inventory, reincarnation, crafting	⬜️
+2	Balance difficulty, skill scaling, monster strengths clearly	⬜️
+3	Optimize performance (asset loading, smooth animations)	⬜️
+4	Playtesting rounds, adjust pacing & mechanics clearly based on feedback	⬜️
 
- Define the "Ascension" endgame conditions and rewards.
+🚀 Phase 8: Release & Future Content
+#	Step	Status
+1	Prepare game for initial release clearly (itch.io, web deployment, etc.)	⬜️
+2	Set up update strategy (regular content drops, new reincarnation forms, worlds clearly defined)	⬜️
+3	Community engagement (Discord, forums, player feedback loops)	⬜️
 
-🎯 Summary of your new clear vision:
-Not repetitive: each reincarnation = genuine evolution.
+📅 Realistic Timeline (Recommendation):
+Phase	Time Frame
+Phase 1	✅ Completed
+Phase 2 (Reincarnation MVP)	1–2 weeks
+Phase 3 (Gameplay innovation)	3–4 weeks
+Phase 4 (Depth & expansion)	4–6 weeks
+Phase 5 (World-building & lore)	4 weeks
+Phase 6 (Endgame design)	3–4 weeks
+Phase 7 (Polishing)	3 weeks
+Phase 8 (Release prep)	1–2 weeks
 
-Lore-driven world transformations.
+Total estimated MVP dev time: ~3–4 months to a playable, polished beta
+(Adjustable based on your speed, availability, and complexity)
 
-Meaningful endgame (Godhood, Cycle Breaking, etc.).
+🚩 Immediate Next Step Recommendation (Right now!):
+Clearly define the initial Goblin Form (skills, stats, abilities)
 
-Legacy-building across reincarnations.
+Clearly define the first transformation (Goblin → Hobgoblin/Mage/Rogue)
+
+Build a simple reincarnation mechanic prototype (trigger at Lv100, select new form)
