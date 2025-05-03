@@ -1,0 +1,36 @@
+[
+    {
+      "id": "hobgoblin",
+      "name": "Hobgoblin",
+      "description": "Stronger and tougher form of goblin. Increases HP and melee damage.",
+      "form": "Hobgoblin",
+      "effects": {
+        "hpMultiplier": 1.2,
+        "attackBonus": 5,
+        "retainSkills": true
+      }
+    },
+    {
+      "id": "goblin_mage",
+      "name": "Goblin Mage",
+      "description": "Unlocks magic potential. Grants initial mana and fireball skill.",
+      "form": "Goblin Mage",
+      "effects": {
+        "mana": 30,
+        "newSkill": "Fireball",
+        "retainSkills": true
+      }
+    },
+    {
+      "id": "goblin_rogue",
+      "name": "Goblin Rogue",
+      "description": "A fast, sneaky evolution. Gains speed and stealth abilities.",
+      "form": "Goblin Rogue",
+      "effects": {
+        "speed": 10,
+        "newSkill": "Backstab",
+        "retainSkills": true
+      }
+    }
+  ]
+  

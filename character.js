@@ -10,16 +10,19 @@ export default class Character{
     levelUp() {
         this.level++;
         this.xp -=this.xpToNextLevel;
-        this.xpToNextLevel = Math.floor(this.xpToNextLevel * 1.5);
+        this.xpToNextLevel = Math.floor(this.xpToNextLevel * 1);
         console.log(`Level up! You are now level ${this.level}`);
     }
 
-    addExperience(exp) {
-        this.xp +=exp
-
-        //TODO: add check for levelUp here.
-        // if(....)
-        // this.levelUp()
-    }
+    addExperience(exp, onLevelUpCallback = null) {
+        this.xp += exp;
+        while (this.xp >= this.xpToNextLevel) {
+          this.levelUp();
+          // Optional callback hook for external logic like reincarnation
+          if (onLevelUpCallback) {
+            onLevelUpCallback(this);
+          }
+        }
+      }      
   };
   

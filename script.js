@@ -1,4 +1,5 @@
   import Character from './character.js';
+  import { checkReincarnationTrigger, loadReincarnations } from './reincarnation.js';
 
   let player = new Character("Basic Goblin", [], 0, 1, 100);
 
@@ -241,10 +242,7 @@
             console.log("No skill acquired this time!");
           }
         // Gain XP and check for level up
-        player.addExperience(enemy.xpReward)
-        if (player.xp >= player.xpToNextLevel) {
-            player.levelUp();
-          }
+        player.addExperience(enemy.xpReward, checkReincarnationTrigger);
         // 🔥 ADD THIS — Item drop logic
         const drops = getRandomDrop(enemy);
         if (drops.length > 0) {
@@ -268,6 +266,7 @@
   // Start the game
   loadGameData("json").then(() => {
     initGame();  // <-- load items here
+    loadReincarnations(); // Load JSON into memory at game start
     updateStatus();
   });
   
